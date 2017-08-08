@@ -13,22 +13,22 @@
             div.col-sm-10
               input(type="text" v-model="newTask.title" placeholder="title").form-control
           .form-group
-            label.col-sm-2.control-label Time
+            label.col-sm-2.control-label Hours
             div.col-sm-10
-              input(type="text" v-model="newTask.time" placeholder="time").form-control
+              input(type="number" v-model="newTask.time" placeholder="time").form-control
           .form-group
             .col-sm-offset-2.col-sm-10
               button.btn.btn-primary Add Task
               button(type="button" v-on:click="cancel").btn.btn-danger Cancel
       div.col-md-6
         h2 Task Lists
-        p.bg-success Horas totales trabajadas {{ totalTime }}
+        p Total hours: {{ totalTime }}
         ul(style="list-style:none", v-if="tasks.length")
           li(v-for="(task, index) in tasks")
             div                            
               button(type="button", v-on:click="removeTask(index)").btn.btn-danger.btn-sm <strong> X</strong>
               span   {{ task.title }} Time: {{ task.time }}
-        p(v-else) No hay tareas
+        div(v-else).alert.alert-info <strong>No tasks!</strong>
 </template>
 
 <script>
